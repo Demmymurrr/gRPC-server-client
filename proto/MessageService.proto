@@ -1,0 +1,17 @@
+syntax = "proto3";
+package ru.demmy.grpc;
+
+message MessageRequest {
+  string header = 1;
+  string payload = 2;
+}
+
+message MessageResponse {
+  bool status = 1;
+  string message = 2;
+}
+
+service MessageService {
+  rpc sendMessage(MessageRequest) returns (MessageResponse);
+  rpc sendMessageAndGetStreamResponse(MessageRequest) returns (stream MessageResponse);
+}
